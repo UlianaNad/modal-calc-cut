@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/modal-calc-cut/static/css/main.7acaea2f.css",
-    "main.js": "/modal-calc-cut/static/js/main.241c4e17.js",
+    "main.js": "/modal-calc-cut/static/js/main.859e6f6c.js",
     "index.html": "/modal-calc-cut/index.html",
     "main.7acaea2f.css.map": "/modal-calc-cut/static/css/main.7acaea2f.css.map",
-    "main.241c4e17.js.map": "/modal-calc-cut/static/js/main.241c4e17.js.map"
+    "main.859e6f6c.js.map": "/modal-calc-cut/static/js/main.859e6f6c.js.map"
   },
   "entrypoints": [
     "static/css/main.7acaea2f.css",
-    "static/js/main.241c4e17.js"
+    "static/js/main.859e6f6c.js"
   ]
 }
