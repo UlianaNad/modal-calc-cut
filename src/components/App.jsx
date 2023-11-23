@@ -8,7 +8,7 @@ export const App = () => {
   return (
     <BodyWrapper>
       <ChosenItem products={products} />
-      <OptionSection />
+      <OptionSection products={products} />
     </BodyWrapper>
   );
 };
