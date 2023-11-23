@@ -7,34 +7,43 @@ const SizesBlock = props => {
   const [customItemPrice, setCustomItemPrice] = useState(null);
   const [amountOfPieces, setAmountOfPieces] = useState(null);
   const [totalPrice, setTotalPrice] = useState(null);
-  const [totalAmountOfCustomParticles, setTotalAmountOfCustomParticles] = useState(null);
-  const [possibleAmountOfCustomParticles, setPossibleAmountOfCustomParticles] = useState(null);
+  const [totalAmountOfCustomParticles, setTotalAmountOfCustomParticles] =
+    useState(null);
+  const [possibleAmountOfCustomParticles, setPossibleAmountOfCustomParticles] =
+    useState(null);
 
-const price = 1252.35;
+  const price = 1252.35;
 
-useEffect(() => {
+  useEffect(() => {
     // Check if both customItemHeight and customItemWidth have values
-    if ((customItemHeight && customItemWidth) && customItemHeight > 0 && customItemWidth > 0) {
+    if (
+      customItemHeight &&
+      customItemWidth &&
+      customItemHeight > 0 &&
+      customItemWidth > 0
+    ) {
       setAmountOfPieces(
         calculateAmountOfCuttingPieces(customItemHeight, customItemWidth)
       );
     }
   }, [customItemHeight, customItemWidth]);
-  
+
   useEffect(() => {
     // This runs after the amountOfPieces state has been updated
     if (amountOfPieces) {
       setCustomItemPrice(calculatePriceForPiece(price, amountOfPieces));
     }
   }, [amountOfPieces, price]);
-  
+
   useEffect(() => {
     if (amountOfPieces && totalAmountOfCustomParticles) {
-      const totalPossibleParts = Math.ceil(totalAmountOfCustomParticles / amountOfPieces);
+      const totalPossibleParts = Math.ceil(
+        totalAmountOfCustomParticles / amountOfPieces
+      );
       setPossibleAmountOfCustomParticles(totalPossibleParts);
     }
   }, [amountOfPieces, totalAmountOfCustomParticles]);
-  
+
   useEffect(() => {
     if (possibleAmountOfCustomParticles) {
       const total = possibleAmountOfCustomParticles * price;
@@ -50,7 +59,7 @@ useEffect(() => {
         setCustomItemWidth(target.value);
       }
     }
-  
+
     if (target.name === 'height') {
       if (target.value < 0 || target.value > 2620) {
         alert('Write smaller size');
@@ -59,12 +68,11 @@ useEffect(() => {
       }
     }
   };
-  
 
   const handleChangeInputTotalAmount = ({ target }) => {
     console.log(target.value);
-    if(target.value){
-        setTotalAmountOfCustomParticles(Number(target.value))
+    if (target.value) {
+      setTotalAmountOfCustomParticles(Number(target.value));
     }
   };
 
@@ -137,8 +145,13 @@ useEffect(() => {
       </p>
 
       <p>
-        Загальна кількість листів для порізки <span>{possibleAmountOfCustomParticles ? possibleAmountOfCustomParticles : 0}</span> шт. i їх загальна
-        вартість <span> {totalPrice ? totalPrice : 0}</span>
+        Загальна кількість листів для порізки{' '}
+        <span>
+          {possibleAmountOfCustomParticles
+            ? possibleAmountOfCustomParticles
+            : 0}
+        </span>{' '}
+        шт. i їх загальна вартість <span> {totalPrice ? totalPrice : 0}</span>
         грн
       </p>
     </div>

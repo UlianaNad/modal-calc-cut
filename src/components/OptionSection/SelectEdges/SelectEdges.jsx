@@ -1,16 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import EdgePreview from './EdgePreview/EdgePreview';
 
-const SelectEdges = () => {
+const SelectEdges = ({ handleSelectChange, handleInputCheckboxChange }) => {
   const [toggleEdgeBlock, setToggleEdgeBlock] = useState(false);
+  const [edges, setEdges] = useState(null)
+
 
   const handleOpenEdgeBlock = () => {
     setToggleEdgeBlock(true);
   };
   const handleCloseEdgeBlock = () => {
     setToggleEdgeBlock(false);
+ 
+    setEdges(null)
+    handleInputCheckboxChange(null)
   };
 
+  const SelectChange = ({ target }) => {
+    setEdges(target.value);
+    handleSelectChange(edges)
+  };
   return (
     <div className="edge-block">
       <h4>Кромка</h4>
@@ -22,10 +31,10 @@ const SelectEdges = () => {
       </button>
       {toggleEdgeBlock ? (
         <div>
-          <EdgePreview />
+          <EdgePreview handleInputCheckboxChange={handleInputCheckboxChange} />
           <div className="field position">
-            <label for="edge-width">Вибрати ширину кромки:</label>
-            <select name="edge-width" id="edge-width">
+            <label className="edge-width">Вибрати ширину кромки:</label>
+            <select onChange={SelectChange} name="edge-width" id="edge-width">
               <option value="22*0.6">22*0.6 </option>
               <option value="22*2">22*2</option>
               <option value="42*2">42*2</option>

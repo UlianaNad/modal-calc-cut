@@ -24,13 +24,14 @@ export const FieldChoiceBottom = styled.div`
     height: 70px;
     background-color: aqua;
     border-radius: 5px;
-    grid-column-start: 3;
+    grid-column-start: 2;
+    grid-row-start:3;
 `;
 export const FieldChoiceRight = styled.div`
       width: 70px;
     height: 70px;
     background-color: aqua;
     border-radius: 5px;
-    grid-column-start: 2;
-    grid-row-start:3;
+    grid-column-start: 3;
+    grid-row-start:2;
 `;
